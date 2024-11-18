@@ -121,10 +121,10 @@ export function UniversityFilters({
           <h3 className="mb-4 text-sm font-medium">Ranking</h3>
           <Select
             value={filters.ranking || "all"}
-            onValueChange={(value: UniversityFiltersType["ranking"]) =>
+            onValueChange={(value) =>
               setFilters((prev) => ({
                 ...prev,
-                ranking: value === "all" ? undefined : value,
+                ranking: value === "all" ? undefined : value as UniversityFiltersType["ranking"],
               }))
             }
           >

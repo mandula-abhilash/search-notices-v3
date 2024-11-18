@@ -1,5 +1,3 @@
-"use client";
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -64,6 +62,16 @@ const mockUniversity: UniversityType = {
     placement: 98,
   },
 };
+
+// Generate static params for all universities
+export function generateStaticParams() {
+  // In a real app, this would fetch all university IDs from your data source
+  return [
+    { id: "1" },
+    { id: "2" },
+    { id: "3" }
+  ];
+}
 
 export default function UniversityPage({
   params,

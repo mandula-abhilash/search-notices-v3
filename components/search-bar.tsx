@@ -10,23 +10,10 @@ export function SearchBar() {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
-
-    try {
-      // In a real app, this would be an API call
-      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
-      const results = await response.json();
-      
-      // Store results in localStorage for the results page
-      localStorage.setItem("searchResults", JSON.stringify(results));
-      
-      // Navigate to search results page
-      router.push(`/search?q=${encodeURIComponent(query)}`);
-    } catch (error) {
-      console.error("Search failed:", error);
-    }
+    router.push(`/search?q=${encodeURIComponent(query)}`);
   };
 
   return (
