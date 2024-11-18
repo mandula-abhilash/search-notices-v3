@@ -24,9 +24,9 @@ import {
   Facebook,
   Twitter,
   Linkedin,
-  WhatsApp,
+  MessageSquare,
   Copy,
-  Image360,
+  Building2,
 } from "lucide-react";
 
 interface UniversityActionsProps {
@@ -115,7 +115,7 @@ export function UniversityActions({
             LinkedIn
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => handleShare("whatsapp")}>
-            <WhatsApp className="mr-2 h-4 w-4" />
+            <MessageSquare className="mr-2 h-4 w-4" />
             WhatsApp
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => handleShare("copy")}>
@@ -141,7 +141,7 @@ export function UniversityActions({
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline" size="icon">
-            <Image360 className="h-4 w-4" />
+            <Building2 className="h-4 w-4" />
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-4xl">
