@@ -62,11 +62,11 @@ const results = [
   },
 ];
 
-const statusColors = {
-  declared: "success",
-  processing: "warning",
-  awaited: "secondary",
-} as const;
+const statusColors: Record<string, "default" | "secondary" | "outline"> = {
+  declared: "default",
+  processing: "secondary",
+  awaited: "outline",
+};
 
 export function ResultTable() {
   const [editingResult, setEditingResult] = useState<any>(null);
@@ -106,9 +106,9 @@ export function ResultTable() {
                 <TableCell>{result.date}</TableCell>
                 <TableCell>
                   <Badge
-                    variant={statusColors[result.status as keyof typeof statusColors]}
+                    variant={statusColors[result.status]}
                   >
-                    {result.status}
+                    {result.status.charAt(0).toUpperCase() + result.status.slice(1)}
                   </Badge>
                 </TableCell>
                 <TableCell>

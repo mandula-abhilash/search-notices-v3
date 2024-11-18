@@ -42,11 +42,11 @@ const results: ResultType[] = [
   },
 ];
 
-const statusColors = {
-  declared: "success",
-  processing: "warning",
-  awaited: "secondary",
-} as const;
+const statusColors: Record<string, "default" | "secondary" | "outline"> = {
+  declared: "default",
+  processing: "secondary",
+  awaited: "outline",
+};
 
 interface ResultListProps {
   filters: ResultFiltersType;
