@@ -32,17 +32,17 @@ const formSchema = z.object({
   name: z.string().min(2).max(100),
   location: z.string(),
   type: z.string(),
-  ranking: z.string().transform(Number),
+  ranking: z.coerce.number().min(1),
   accreditation: z.array(z.string()),
-  established: z.string().transform(Number),
+  established: z.coerce.number().min(1800).max(new Date().getFullYear()),
   website: z.string().url(),
   image: z.string().url(),
   description: z.string().min(10).max(500),
   highlights: z.object({
-    students: z.string().transform(Number),
-    faculty: z.string().transform(Number),
-    researchPapers: z.string().transform(Number),
-    placement: z.string().transform(Number),
+    students: z.coerce.number().min(0),
+    faculty: z.coerce.number().min(0),
+    researchPapers: z.coerce.number().min(0),
+    placement: z.coerce.number().min(0).max(100),
   }),
 });
 
@@ -58,17 +58,17 @@ export function UniversityForm({ onSuccess, initialData }: UniversityFormProps) 
       name: "",
       location: "",
       type: "",
-      ranking: "",
+      ranking: 0,
       accreditation: [],
-      established: "",
+      established: new Date().getFullYear(),
       website: "",
       image: "",
       description: "",
       highlights: {
-        students: "",
-        faculty: "",
-        researchPapers: "",
-        placement: "",
+        students: 0,
+        faculty: 0,
+        researchPapers: 0,
+        placement: 0,
       },
     },
   });
@@ -319,6 +319,8 @@ export function UniversityForm({ onSuccess, initialData }: UniversityFormProps) 
                     <Input
                       type="number"
                       placeholder="Enter placement rate"
+                      min="0"
+                      max="100"
                       {...field}
                     />
                   </FormControl>
